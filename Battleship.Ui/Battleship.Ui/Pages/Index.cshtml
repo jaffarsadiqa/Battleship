@@ -1,0 +1,432 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<style>
+    table tr th {width:70px;height:50px;text-align:center}
+</style>
+<div class="text-center">
+    <h1 class="display-4">Battleship Game</h1>    
+</div>
+<div class="container">
+    <div class="row">
+        Steps to play the game
+        <ul>
+            <li>Click register and give the name of the player</li>
+            <li>Add a ship to the board by clicking addship</li>
+            <li>After adding a ship place the ship in board, horizontally or vertically</li>
+            <li>After assigning the ship, click on a row or column to see if the ship is been hit or missed</li>
+        </ul>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal" id="btnRegister" style="width:150px;">
+            Register Player
+        </button>
+    </div>
+    <div class="row">
+        <div class="container" id="dvGameBoard" style="display:none"> 
+            <div class="row" style="background:gray">
+                <div class="col-8" style="">
+                    <h1 class="display-5">Board Tiles</h1>
+                </div>
+                <div class="col-4">
+                    <h1 class="display-5">Ships</h1>
+                </div>
+            </div>
+            <div class="row" style="background:#aeb5db">
+                <div class="col-8" style="font-size:14px;">                    
+                    <div style="font-size:16px;">Click on a Row and Column matrix to check if the ship placed is hit or not;</div><br />
+                    Legends - <span style="color:red">Red</span> is hit, <span style="color:Green">Green</span> is missed
+                </div>
+                <div class="col-4">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <table width="100%" cellpadding="0" cellspacing="0" id="tblBoard">
+                        <tr style="background:#cccccc">
+                            <th>&nbsp;</th>
+                            <th>Col-1</th>
+                            <th>Col-2</th>
+                            <th>Col-3</th>
+                            <th>Col-4</th>
+                            <th>Col-5</th>
+                            <th>Col-6</th>
+                            <th>Col-7</th>
+                            <th>Col-8</th>
+                            <th>Col-9</th>
+                            <th>Col-10</th>
+                        </tr>
+                        <tr>
+                            <th style="background:#cccccc">Row-1</th>
+                            <th>1,1</th>
+                            <th>1,2</th>
+                            <th>1,3</th>
+                            <th>1,4</th>
+                            <th>1,5</th>
+                            <th>1,6</th>
+                            <th>1,7</th>
+                            <th>1,8</th>
+                            <th>1,9</th>
+                            <th>1,10</th>
+                        </tr>
+                        <tr>
+                            <th style="background:#cccccc">Row-2</th>
+                            <th>2,1</th>
+                            <th>2,2</th>
+                            <th>2,3</th>
+                            <th>2,4</th>
+                            <th>2,5</th>
+                            <th>2,6</th>
+                            <th>2,7</th>
+                            <th>2,8</th>
+                            <th>2,9</th>
+                            <th>2,10</th>
+                        </tr>
+                        <tr>
+                            <th style="background:#cccccc">Row-3</th>
+                            <th>3,1</th>
+                            <th>3,2</th>
+                            <th>3,3</th>
+                            <th>3,4</th>
+                            <th>3,5</th>
+                            <th>3,6</th>
+                            <th>3,7</th>
+                            <th>3,8</th>
+                            <th>3,9</th>
+                            <th>3,10</th>
+                        </tr>
+                        <tr>
+                            <th style="background:#cccccc">Row-4</th>
+                            <th>4,1</th>
+                            <th>4,2</th>
+                            <th>4,3</th>
+                            <th>4,4</th>
+                            <th>4,5</th>
+                            <th>4,6</th>
+                            <th>4,7</th>
+                            <th>4,8</th>
+                            <th>4,9</th>
+                            <th>4,10</th>
+                        </tr>
+                        <tr>
+                            <th style="background:#cccccc">Row-5</th>
+                            <th>5,1</th>
+                            <th>5,2</th>
+                            <th>5,3</th>
+                            <th>5,4</th>
+                            <th>5,5</th>
+                            <th>5,6</th>
+                            <th>5,7</th>
+                            <th>5,8</th>
+                            <th>5,9</th>
+                            <th>5,10</th>
+                        </tr>
+                        <tr>
+                            <th style="background:#cccccc">Row-6</th>
+                            <th>6,1</th>
+                            <th>6,2</th>
+                            <th>6,3</th>
+                            <th>6,4</th>
+                            <th>6,5</th>
+                            <th>6,6</th>
+                            <th>6,7</th>
+                            <th>6,8</th>
+                            <th>6,9</th>
+                            <th>6,10</th>
+                        </tr>
+                        <tr>
+                            <th style="background:#cccccc">Row-7</th>
+                            <th>7,1</th>
+                            <th>7,2</th>
+                            <th>7,3</th>
+                            <th>7,4</th>
+                            <th>7,5</th>
+                            <th>7,6</th>
+                            <th>7,7</th>
+                            <th>7,8</th>
+                            <th>7,9</th>
+                            <th>7,10</th>
+                        </tr>
+                        <tr>
+                            <th style="background:#cccccc">Row-8</th>
+                            <th>8,1</th>
+                            <th>8,2</th>
+                            <th>8,3</th>
+                            <th>8,4</th>
+                            <th>8,5</th>
+                            <th>8,6</th>
+                            <th>8,7</th>
+                            <th>8,8</th>
+                            <th>8,9</th>
+                            <th>8,10</th>
+                        </tr>
+                        <tr>
+                            <th style="background:#cccccc">Row-9</th>
+                            <th>9,1</th>
+                            <th>9,2</th>
+                            <th>9,3</th>
+                            <th>9,4</th>
+                            <th>9,5</th>
+                            <th>9,6</th>
+                            <th>9,7</th>
+                            <th>9,8</th>
+                            <th>9,9</th>
+                            <th>9,10</th>
+                        </tr>
+                        <tr>
+                            <th style="background:#cccccc">Row-10</th>
+                            <th>10,1</th>
+                            <th>10,2</th>
+                            <th>10,3</th>
+                            <th>10,4</th>
+                            <th>10,5</th>
+                            <th>10,6</th>
+                            <th>10,7</th>
+                            <th>10,8</th>
+                            <th>10,9</th>
+                            <th>10,10</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-4">
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-primary" style="width:100px;float:right;margin-top:10px" data-bs-toggle="modal" data-bs-target="#shipModal">Add Ship</button>
+                        </div>                        
+                    </div>
+                    <div>
+                        <table width="100%" border="1px">
+                            <tr style="background:black;color:white">
+                                <th>Name</th>
+                                <th>Assigned Node</th>
+                                <th>Action</th>
+                            </tr>
+                        </table>
+                        <table id="tblShip" width="100%" border="1px">
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>    
+</div>
+
+<!-- Modal Register-->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModalLabel">Register Player</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">Player Name</div>
+                    <div class="col"><input type="text" id="txtPlayerName"/></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="apiManager.registerPlayer($('#txtPlayerName').val(),RegisterSuccess)">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal Register-->
+<!-- Modal Ship-->
+<div class="modal fade" id="shipModal" tabindex="-1" aria-labelledby="shipModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="shipModalLabel">Register ship</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">Ship Name</div>
+                    <div class="col"><input type="text" id="txtShipName" /></div>
+                </div>
+                <div class="row">
+                    <div class="col">Ship Size</div>
+                    <div class="col"><input type="text" id="txtShipSize" /></div>
+                </div>
+                <div class="row">
+                    <div class="col">Ship Type</div>
+                    <div class="col"><select id="cmbShipType"><option value="1">Carrier</option><option value="2">Cruiser</option><option value="3">Destroyer</option><option value="4">Frigate</option><option value="5">Submarine</option></select></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="apiManager.addShip($('#txtShipName').val(),$('#txtShipSize').val(),$('#cmbShipType option').filter(':selected').val(),AddShipSuccess,AddShipFailure)">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal Ship-->
+<!-- Modal AssignShip-->
+<div class="modal fade" id="assignShipModal" tabindex="-1" aria-labelledby="assignShipModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="assignShipModalLabel">Assign ship</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">Shim Placae</div>
+                    <div class="col-3"><input type="radio" value="1" name="shipPlaced" id="txtshipPlaced1" checked/>Vertical</div>
+                    <div class="col-3"><input type="radio" value="2" name="shipPlaced" id="txtshipPlaced2" />Horizontal</div>
+                </div>
+                <div class="row">
+                    <div class="col">Start Position - Row</div>
+                    <div class="col"><input type="text" id="txtBoardRow" /></div>                    
+                </div>
+                <div class="row">
+                    <div class="col">Start Position - Column</div>
+                    <div class="col"><input type="text" id="txtBoardCol" /></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="AssignShip()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal AssignShip-->
+@section scripts {
+    <script>
+        var selecteShipForAssignment=null;
+        $(document).ready(function(){
+            var tr=$("#tblBoard").find("tr");
+            for(i=1;i<tr.length;i++){
+                var col = $(tr[i]).find("th");
+                for(j=1;j<col.length;j++){
+                    $(col[j]).click(ClickHit)
+                }
+            }
+        })
+        function RegisterSuccess(res){
+            if (!res.success) {
+                ShowCustomMessage(res.message);
+                return;
+            }
+            $("#dvGameBoard").show();
+            $("#btnRegister").hide();            
+        }
+        function ClickHit(event) {
+            if(!apiManager.ShipList || apiManager.ShipList.length==0){
+                alert("Add Ship and assign to the board to start the Game")
+                return;
+            }
+            var source = event.target || event.srcElement;
+            var txt = $(source).text()
+            var coordinate = txt.replace("(","").replace(")","").split(",");
+            row = parseInt(coordinate[0]);
+            col = parseInt(coordinate[1]);
+            console.log(txt);
+            success=function(res){
+                if (!res.success) {
+                    ShowCustomMessage(res.message);
+                    return;
+                }
+                if(res.result){                    
+                    $($($("#tblBoard tr")[row]).find("th")[col]).css("background-color","red");
+                    alert("Hit the ship");
+                }else{
+                    $($($("#tblBoard tr")[row]).find("th")[col]).css("background-color","green")
+                    alert("Missed the ship");
+                }
+            }
+            failure=function(err){
+                alert(err);
+            }
+            apiManager.attackShip(row,col,success,failure);
+        }
+        function AddShipSuccess(res){
+            if(!res.success){
+                ShowCustomMessage(res.message);
+                return;
+            }
+            $('#shipModal').modal('hide')
+            apiManager.ShipList[apiManager.ShipList.length]=res.result;
+
+            populateShip();
+        }
+        function populateShip(){
+            var shipListTr = ""
+            arrShip = apiManager.ShipList;
+            for (i = 0; i < arrShip.length; i++) {
+                shp = arrShip[i];
+                var AssignNodes = "";
+                for (j = 0; j < shp.shipPlacedNodes.length; j++) {
+                    AssignNodes += "(" + (shp.shipPlacedNodes[j].row+1) + "," + (shp.shipPlacedNodes[j].column+1) + "),"
+                }
+                shipListTr += "<tr><td>" + shp.name + "-" + apiManager.ShipTypes[shp.type - 1] + "-Size(" + shp.boardPointSize + ")</td><td>" + AssignNodes + "</td><td><input type='button' value='Assign' onclick='AssignShipModal(\"" + shp.id + "\")'></td></tr>";
+            }
+            console.log(arrShip)
+            $("#tblShip tbody").html(shipListTr);
+        }
+        function AddShipFailure(err){
+            console.log(err);
+            alert(err);
+        }
+        function AssignShip(){
+            apiManager.assignShip($("input[name='shipPlaced']:checked").val(),$('#txtBoardRow').val(),$('#txtBoardCol').val(),selecteShipForAssignment,AssignShipSuccess,AssignShipFailure);
+        }
+        function AssignShipModal(shipId){
+            selecteShipForAssignment = shipId
+            $('#assignShipModal').modal('show');
+        }
+        function AssignShipSuccess(res){
+            if (!res.success) {
+                ShowCustomMessage(res.message);
+            }else{
+                success=function(res1){
+                    if (!res1.success) {
+                        ShowCustomMessage(res.message);
+                    }
+                    $('#assignShipModal').modal('hide');
+                    var shp=setShip(res1.result)
+                    populateShip();
+                    /*shp.shipPlacedNodes.forEach((e)=>{
+                        var tr =$("#tblBoard tr")[e.row+1]
+                        $(tr.)
+                    });*/
+
+                }
+                failure=function(err){
+                    alert(err)
+                }
+                apiManager.getShip(selecteShipForAssignment, success, failure);                
+            }
+        }
+        function AssignShipFailure(err) {
+            console.log(err);
+            alert(err);
+        }
+        function ShowCustomMessage(messages){
+            if(messages && messages.length>0){
+                alert(messages[0]);
+            }
+        }
+        function setShip(ship){
+            for (l = 0; l < apiManager.ShipList.length;l++){
+                var shp = apiManager.ShipList[l];
+                if(shp.id===ship.id){
+                    apiManager.ShipList[l]=ship;
+                    return shp;
+                }
+            }
+        }
+    </script>
+
+}
+

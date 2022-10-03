@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Battleship.Web", "Battleship.Web\Battleship.Web.csproj", "{1253BB22-1AD4-4700-BE7B-AF972C72DFFD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Battleship.Common", "Battleship.Common\Battleship.Common.csproj", "{AED56FFE-E495-44CB-9A4D-92379586625B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Battleship.Model", "Battleship.Model\Battleship.Model.csproj", "{CB468982-38D0-4992-A1EB-EE54E5C6A781}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BattleShip.Service", "BattleShip.Service\BattleShip.Service.csproj", "{37352E6B-8D0F-414E-AA66-CEEAC12D3A8D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{396FD270-C0BE-4A42-B16F-E80A80759D2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battleship.Service.Test", "Battleship.Service.Test\Battleship.Service.Test.csproj", "{BAC21D0F-00DE-416D-BF1D-BB068AF34092}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battleship.Model.Validators", "Battleship.Model.Validators\Battleship.Model.Validators.csproj", "{13A84B8E-B04F-4847-A215-9816FA2AD257}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1253BB22-1AD4-4700-BE7B-AF972C72DFFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1253BB22-1AD4-4700-BE7B-AF972C72DFFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1253BB22-1AD4-4700-BE7B-AF972C72DFFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1253BB22-1AD4-4700-BE7B-AF972C72DFFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AED56FFE-E495-44CB-9A4D-92379586625B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED56FFE-E495-44CB-9A4D-92379586625B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED56FFE-E495-44CB-9A4D-92379586625B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED56FFE-E495-44CB-9A4D-92379586625B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB468982-38D0-4992-A1EB-EE54E5C6A781}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB468982-38D0-4992-A1EB-EE54E5C6A781}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB468982-38D0-4992-A1EB-EE54E5C6A781}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB468982-38D0-4992-A1EB-EE54E5C6A781}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37352E6B-8D0F-414E-AA66-CEEAC12D3A8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37352E6B-8D0F-414E-AA66-CEEAC12D3A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37352E6B-8D0F-414E-AA66-CEEAC12D3A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37352E6B-8D0F-414E-AA66-CEEAC12D3A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAC21D0F-00DE-416D-BF1D-BB068AF34092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAC21D0F-00DE-416D-BF1D-BB068AF34092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAC21D0F-00DE-416D-BF1D-BB068AF34092}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAC21D0F-00DE-416D-BF1D-BB068AF34092}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13A84B8E-B04F-4847-A215-9816FA2AD257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13A84B8E-B04F-4847-A215-9816FA2AD257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13A84B8E-B04F-4847-A215-9816FA2AD257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13A84B8E-B04F-4847-A215-9816FA2AD257}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BAC21D0F-00DE-416D-BF1D-BB068AF34092} = {396FD270-C0BE-4A42-B16F-E80A80759D2B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0B0740C-4EC9-473B-98AF-430D7B26B33F}
+	EndGlobalSection
+EndGlobal
